@@ -19,6 +19,8 @@ db.on('error', function (err) {
 db.once('open', function() {
   console.log('>>>>>    Successfully connection to ' + process.env.DB_HOST + '\\' + process.env.DB_NAME);
 
+  require('./models/index');
+
   var sessionSchema = mongoose.Schema({
     _id      : String,
     session  : String,

@@ -4,16 +4,18 @@
 
 
 define([
+    'views\\users\\userItemView',
     'text!templates\\users\\usersTemplate.html'
 
-], function (UsersTemplate) {
+], function (UserView, UsersTemplate) {
 
     var View;
     View = Backbone.View.extend({
 
         el : '#wrapper',
 
-        usersTemplate : _.template(UsersTemplate),
+        usersTemplate  : _.template(UsersTemplate),
+        usersContainer : $('#usersContainer'),
 
         initialize: function () {
             this.render();
@@ -24,7 +26,8 @@ define([
         },
 
         letsSaveOurUser: function() {
-            var thisEl = this.$el;
+            var self = this;
+            var thisEl = self.$el;
             var first_name = thisEl.find('#firstName').val().trim();
             var last_name = thisEl.find('#lastName').val().trim();
             var email = thisEl.find('#email').val().trim();
@@ -43,13 +46,33 @@ define([
                 url   : 'users',
                 type  : 'POST',
                 data  : saveData,
-                success : function () {
+                success : function (response) {
+                    self.clearFormData();
+                    self.renderUserItem();
                     alert('User saved successfully!')
                 },
                 alert : function() {
                     alert('Error')
                 }
             });
+        },
+
+        clearFormData: function(){
+            var thisEl = this.$el;
+
+            thisEl.find('#firstName').val('');
+            thisEl.find('#lastName').val('');
+            thisEl.find('#email').val('');
+            thisEl.find('#password').val('');
+            thisEl.find('#role').val('');
+        },
+
+        renderUserItem: function(item){
+            var userView = new UserView({
+                model : item
+            });
+
+            this.usersContainer.append(userView.render().el);
         },
 
         render: function () {
