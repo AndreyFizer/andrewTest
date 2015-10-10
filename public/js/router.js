@@ -7,13 +7,16 @@
  */
 
 define([
-], function () {
+    'views/menu/topMenuView',
+    'views/menu/leftMenuView'
+], function (TopMenu, LeftMenu) {
 
     var appRouter;
     appRouter = Backbone.Router.extend({
 
         wrapperView : null,
         topBarView  : null,
+        leftBarView  : null,
 
         routes: {
             "users"                       :  "users",
@@ -21,7 +24,8 @@ define([
         },
 
         initialize: function () {
-            //new TopMenuView();
+            this.topBarView = new TopMenu();
+            this.leftBarView = new LeftMenu();
         },
 
         loadWrapperView: function (argName, argParams, argRedirect) {
@@ -60,7 +64,9 @@ define([
 
         users : function () {
             var self = this;
-            require(['views/users/usersView'], function(UserView){
+            require([
+                'views/users/usersView'], function(UserView){
+
                 var userView = new UserView();
 
                 if (self.wrapperView) {

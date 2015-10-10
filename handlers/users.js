@@ -24,15 +24,40 @@ var UserHandler = function (db) {
         //    invoice.editedBy.user = req.session.uId;
         //}
 
-        userModel.save(function (err, result) {
+        userModel.save(function (err, user) {
             if (err) {
                 return next(err);
             }
-            res.status(200).send({success: result});
+            res.status(200).send(user);
         });
     }
 
+    function getUsers(req, res, next) {
+
+        UserModel.find()
+            .exec(function (err, users) {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).send(users);
+            });
+    }
+
+    function getUserById(req, res, next){
+        var userId = req.params.id;
+
+        UserModel.find({'_id' : userId})
+            .exec(function (err, user) {
+                if (err) {
+                    return next(err);
+                }
+                res.status(200).send(user);
+            });
+    }
+
     this.createUser = createUser;
+    this.getUserById = getUserById;
+    this.getUsers = getUsers;
 
 };
 

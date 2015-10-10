@@ -5,9 +5,10 @@
 
 define([
     'views\\users\\userItemView',
-    'text!templates\\users\\usersTemplate.html'
+    'text!templates\\users\\usersTemplate.html',
+    'collections\\usersCollection'
 
-], function (UserView, UsersTemplate) {
+], function (UserView, UsersTemplate, UsersCollection) {
 
     var View;
     View = Backbone.View.extend({
@@ -15,9 +16,13 @@ define([
         el : '#wrapper',
 
         usersTemplate  : _.template(UsersTemplate),
-        usersContainer : $('#usersContainer'),
+        //usersContainer : $('#usersContainer'),
 
         initialize: function () {
+            this.usersCollection = new UsersCollection();
+            this.listenTo(this.usersCollection, 'reset', this.renderUserList);
+            this.listenTo(this.usersCollection, 'add', this.renderUserItem);
+
             this.render();
         },
 
@@ -42,7 +47,17 @@ define([
                 role       : role
             };
 
-            $.ajax({
+            this.usersCollection.create(saveData,{
+                wait : true,
+                success : function(){
+                    self.clearFormData();
+                },
+                error : function(model, xhr){
+                    alert(xhr);
+                }
+            });
+
+            /*$.ajax({
                 url   : 'users',
                 type  : 'POST',
                 data  : saveData,
@@ -54,7 +69,7 @@ define([
                 alert : function() {
                     alert('Error')
                 }
-            });
+            });*/
         },
 
         clearFormData: function(){
@@ -67,12 +82,24 @@ define([
             thisEl.find('#role').val('');
         },
 
+        renderUserList: function(){
+            var self = this;
+            //var currentCollection = this.usersCollection.toJSON();
+
+            this.usersCollection.forEach(function(model){
+                self.renderUserItem(model)
+            });
+        },
+
         renderUserItem: function(item){
             var userView = new UserView({
                 model : item
             });
 
-            this.usersContainer.append(userView.render().el);
+            var container = $('#usersContainer');
+
+            //this.usersContainer.append(userView.render().el);
+            container.append(userView.render().el);
         },
 
         render: function () {
