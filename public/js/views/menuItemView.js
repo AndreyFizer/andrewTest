@@ -28,13 +28,15 @@ define([
             }
         },
         
-        activateMenu: function (event) {
+        activateMenu: function (ev) {
             window.app.vent.trigger('menu:activate', this.model);
             window.app.main.show(new PageView({model: this.model}));
         },
         
         onRender: function () {
-            if (this.model.get('active')) this.$el.addClass('active');
+            if (this.model.get('active')) {
+                this.$el.addClass('active')
+            }
         }
         
     });

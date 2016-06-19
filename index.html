@@ -13,13 +13,27 @@
     <title>Andrew</title>
     <link rel="stylesheet/css" href="js/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet/less" href="stylesheets/style.less">
+    <script type="text/javascript" src="js/libs/requirejs/require.js" data-main="js/main"></script>
 </head>
 <body>
-    <header id="topBar"></header>
-    <nav id="leftBar"></nav>
-    <div id="wrapper"></div>
-    <footer id="bottomBar"></footer>
+<div class="container">
+    <div class="header">
+        <span id="main-nav"></span>
+        <h3 class="text-muted">Marionette boilerplate</h3>
+    </div>
 
-    <script data-main="js/main" src="js/libs/requirejs/require.js"></script>
+    <div id="notification"></div><!-- /#notification -->
+
+    <div id="main"></div>
+
+    <div class="footer" id="footer"></div>
+
+    <!-- To be used as modal and notifications-->
+    <div class="modal fade" id="dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    </div><!-- /.modal -->
+
+</div> <!-- /container -->
+
+
 </body>
 </html>

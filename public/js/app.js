@@ -55,7 +55,7 @@ define([
     });
 
     app.commands.setHandler("app:notify", function (jsonData) {
-        require(['views/NotificationView'], function (NotifyView) {
+        require(['views/notificationView'], function (NotifyView) {
             app.notification.show(new NotifyView({
                 model: new Backbone.Model(jsonData)
             }));
@@ -63,7 +63,7 @@ define([
     });
 
     app.commands.setHandler("app:dialog:simple", function (data) {
-        require(['views/DialogView', 'models/Dialog', 'tpl!templates/simpleModal.html'],
+        require(['views/dialogView', 'models/dialog', 'text!tmpl/simpleModal.html'],
             function (DialogView, DialogModel, ModalTpl) {
                 
                 app.dialog.show(new DialogView({
