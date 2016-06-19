@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "backbone.marionette": "marionette#^2.4.7"
+    "backbone.marionette": "marionette#^2.4.7",
+    "bootstrap": "^3.3.6",
+    "requirejs": "^2.2.0"
   }
 }
