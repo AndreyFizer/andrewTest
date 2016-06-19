@@ -6,9 +6,10 @@ define([
     'regions/notifications',
     'regions/dialog',
     'collections/nav',
-    'views/MenuView',
-    'views/Footer'
-], function (Backbone, Marionette, NotifyRegion, DialogRegion, NavColl, MenuView, Footer) {
+    'views/menuView',
+    'views/footerView'
+
+], function (Backbone, Marionette, NotifyRegion, DialogRegion, NavColl, MenuView, FooterView) {
     'use strict';
     
     var app = new Marionette.Application();
@@ -36,7 +37,7 @@ define([
     
     app.addInitializer(function () {
         app.menu.show(menu);
-        app.footer.show(new Footer());
+        app.footer.show(new FooterView());
     });
     
     app.on("initialize:after", function (options) {
@@ -46,20 +47,13 @@ define([
     });
     
     app.vent.on('menu:activate', function (activePageModel) {
-        menu.collection.findWhere({active: true})
+        menu.collection
+            .findWhere({active: true})
             .set('active', false);
         activePageModel.set('active', true);
         menu.render();
     });
-    
-    /**
-     * Sample JSON Data
-     * app.commands.execute("app:notify", {
-     *           type: 'warning'    // Optional. Can be info(default)|danger|success|warning
-     *           title: 'Success!', // Optional
-     *           description: 'We are going to remove Team state!'
-     *       });
-     */
+
     app.commands.setHandler("app:notify", function (jsonData) {
         require(['views/NotificationView'], function (NotifyView) {
             app.notification.show(new NotifyView({
@@ -67,15 +61,7 @@ define([
             }));
         });
     });
-    
-    /**
-     * @example
-     * app.commands.execute("app:dialog:simple", {
-     *           icon: 'info-sign'    // Optional. default is (glyphicon-)bell
-     *           title: 'Dialog title!', // Optional
-     *           message: 'The important message for user!'
-     *       });
-     */
+
     app.commands.setHandler("app:dialog:simple", function (data) {
         require(['views/DialogView', 'models/Dialog', 'tpl!templates/simpleModal.html'],
             function (DialogView, DialogModel, ModalTpl) {
@@ -86,17 +72,7 @@ define([
                 }));
             });
     });
-    
-    /**
-     * @example
-     * app.commands.execute("app:dialog:confirm", {
-     *           icon: 'info-sign'    // Optional. default is (glyphicon-)bell
-     *           title: 'Dialog title!', // Optional
-     *           message: 'The important message for user!'
-     *           'confirmYes': callbackForYes, // Function to execute of Yes clicked
-     *           'confirmNo': callbackForNo, // Function to execute of No clicked
-     *       });
-     */
+
     app.commands.setHandler("app:dialog:confirm", function (data) {
         require(['views/DialogView', 'models/Dialog', 'tpl!templates/confirmModal.html'],
             function (DialogView, DialogModel, ModalTpl) {

@@ -6,7 +6,8 @@ require.config({
         backbone    : './libs/backbone/backbone-min',
         marionette  : './libs/backbone.marionette/lib/backbone.marionette.min',
         jquery      : './libs/jquery/dist/jquery.min',
-        bootstrap   : './libs/bootstrap/dist/js/bootstrap.min'
+        bootstrap   : './libs/bootstrap/dist/js/bootstrap.min',
+        tmpl        : '../templates'
     },
 
     shim       : {
