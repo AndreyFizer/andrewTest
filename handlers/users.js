@@ -19,11 +19,6 @@ var UserHandler = function (db) {
 
         var userModel = new UserModel(body);
 
-        //if (req.session.uId) {
-        //    invoice.createdBy.user = req.session.uId;
-        //    invoice.editedBy.user = req.session.uId;
-        //}
-
         userModel.save(function (err, user) {
             if (err) {
                 return next(err);
