@@ -2,11 +2,12 @@
 
 define([
     'backbone',
-    'models/page'
-], function (Backbone, PageModel) {
+    'models/menuModel'
+    
+], function (Backbone, MenuModel) {
     'use strict';
-
+    
     return Backbone.Collection.extend({
-        model: PageModel
+        model: MenuModel
     });
 });

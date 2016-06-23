@@ -1,53 +1,57 @@
 // Created by andrey on 19.06.16.
 
-require.config({
-    paths: {
-        underscore           : './libs/underscore/underscore-min',
-        backbone             : './libs/backbone/backbone-min',
-        marionette           : './libs/backbone.marionette/lib/core/backbone.marionette.min',
-        jquery               : './libs/jquery/dist/jquery.min',
-        text                 : './libs/text/text',
-        bootstrap            : './libs/bootstrap/dist/js/bootstrap.min',
-        tmpl                 : '../templates',
-        'backbone.babysitter': './libs/backbone.babysitter/lib/backbone.babysitter.min',
-        'backbone.wreqr'     : './libs/backbone.wreqr/lib/backbone.wreqr.min'
-    },
+var APP = APP || {};
 
-    shim       : {
+require.config({
+    baseUrl: "app",
+    paths  : {
+        'jquery'             : './libs/jquery/dist/jquery',
+        'backbone'           : './libs/backbone/backbone',
+        'underscore'         : './libs/lodash/dist/lodash',
+        'marionette'         : './libs/marionette/lib/core/backbone.marionette',
+        'backbone.babysitter': './libs/backbone.babysitter/lib/backbone.babysitter',
+        'backbone.wreqr'     : './libs/backbone.wreqr/lib/backbone.wreqr',
+        'bootstrap'          : './libs/bootstrap/dist/js/bootstrap.min',
+        'text'               : './libs/text/text',
+        'templates'          : '../templates',
+        'views'              : './views'
+    },
+    shim   : {
+        jquery    : {
+            exports: '$'
+        },
         underscore: {
             exports: '_'
         },
-        
-        backbone: {
-            exports: 'Backbone',
-            deps   : ['bootstrap', 'underscore']
+        backbone  : {
+            deps   : ['jquery', 'underscore'],
+            exports: 'Backbone'
         },
-
         marionette: {
-            exports: 'Backbone.Marionette',
-            deps   : ['backbone', 'backbone.babysitter', 'backbone.wreqr']
+            deps   : ['jquery', 'underscore', 'backbone'],
+            exports: 'Marionette'
         },
-
-        bootstrap: {
+        bootstrap : {
             deps: ['jquery']
+        },
+        app       : {
+            deps: ['jquery', 'underscore', 'backbone', 'marionette']
+        },
+        router    : {
+            deps: ['app']
         }
-
-    },
-    waitSeconds: 60
+    }
 });
 
 require([
-    'app',
-    'modules/pages',
-    'jquery',
-    'bootstrap'
-
-], function (app, PagesModule) {
-    'use strict';
-
-    app.addInitializer(function () {
-        PagesModule.start();
+        "app",
+        "bootstrap"
+    ],
+    function (app) {
+        "use strict";
+        
+        app.addInitializer();
+        
+        app.start();
+        
     });
-
-    app.start();
-});

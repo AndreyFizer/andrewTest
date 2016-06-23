@@ -1,15 +1,19 @@
 // Created by andrey on 19.06.16.
 
 define([
-    'marionette',
+    'jquery',
     'underscore',
-    'text!tmpl/footerTemp.html'
+    'marionette',
+    'text!templates/footerTemp.html'
     
-], function (Marionette, _, FooterTemp) {
-    'use strict';
-    
-    return Marionette.ItemView.extend({
-        template: _.template(FooterTemp)
+], function ($, _, Marionette, FooterTmpl) {
+    var View;
+    View = Marionette.ItemView.extend({
+        
+        template: _.template(FooterTmpl)
+        
     });
+    
+    return View;
+    
 });
- 
