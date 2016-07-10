@@ -7,6 +7,8 @@ define([
     'text!templates/footerTemp.html'
     
 ], function ($, _, Marionette, FooterTmpl) {
+    "use strict";
+    
     var View;
     View = Marionette.ItemView.extend({
         

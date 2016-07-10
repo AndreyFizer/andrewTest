@@ -3,7 +3,6 @@
 var APP = APP || {};
 
 require.config({
-    baseUrl: "app",
     paths  : {
         'jquery'             : './libs/jquery/dist/jquery',
         'backbone'           : './libs/backbone/backbone',
@@ -14,7 +13,8 @@ require.config({
         'bootstrap'          : './libs/bootstrap/dist/js/bootstrap.min',
         'text'               : './libs/text/text',
         'templates'          : '../templates',
-        'views'              : './views'
+        'views'              : './views',
+        'app'                : './app'
     },
     shim   : {
         jquery    : {
@@ -35,10 +35,7 @@ require.config({
             deps: ['jquery']
         },
         app       : {
-            deps: ['jquery', 'underscore', 'backbone', 'marionette']
-        },
-        router    : {
-            deps: ['app']
+            deps: ['marionette']
         }
     }
 });

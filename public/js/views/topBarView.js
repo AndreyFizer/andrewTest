@@ -8,6 +8,8 @@ define([
     'text!templates/topBarTemp.html'
 
 ], function ($, _, Marionette, TopBarItemView, TopBarTemp) {
+    "use strict";
+    
     var View;
     View = Marionette.CompositeView.extend({
         childView : TopBarItemView,

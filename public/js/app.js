@@ -1,19 +1,21 @@
 define([
         'marionette',
         'backbone',
+        'router',
         'views/footerView',
         'views/topBarView',
         'collections/menuCollection'
     ],
-    function (Marionette, Backbone, FooterView, TopBarView, MenuColl) {
+    function (Marionette, Backbone, Router, FooterView, TopBarView, MenuColl) {
         "use strict";
         
-        var app = new Marionette.Application();
-        
+        var app;
+        window.APP = app = new Marionette.Application();
+    
         var menuCollection = new MenuColl([
-            {menuName: 'menu1', menuUrl: '#first', menuActive: true},
-            {menuName: 'menu2', menuUrl: '#second', menuActive: false},
-            {menuName: 'menu3', menuUrl: '#third', menuActive: false}
+            {menuName: 'first', menuUrl: '#first', menuActive: true},
+            {menuName: 'second', menuUrl: '#second', menuActive: false},
+            {menuName: 'third', menuUrl: '#third', menuActive: false}
         ]);
         var footerView = new FooterView();
         var topBarView = new TopBarView({collection: menuCollection});
@@ -27,15 +29,18 @@ define([
         app.addInitializer(function () {
             app.topBar.show(topBarView);
             app.footerBar.show(footerView);
-            
+
+            new Router;
+            Backbone.history.start();
             console.log('App inicialized successfully...');
         });
         
-        app.on("initialize:after", function (options) {
-            if (Backbone.history) {
-                Backbone.history.start();
-            }
-        });
+        // app.on("start", function (options) {
+        //
+        //     if (Backbone.history) {
+        //         Backbone.history.start();
+        //     }
+        // });
         
         return app;
     });
