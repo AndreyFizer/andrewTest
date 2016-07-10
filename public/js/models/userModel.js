@@ -3,9 +3,10 @@
 define([
     'jquery',
     'underscore',
-    'backbone'
+    'backbone',
+    'moment'
 
-], function ($, _, Backbone) {
+], function ($, _, Backbone, moment) {
     "use strict";
     
     var Model = Backbone.Model.extend({
@@ -20,6 +21,13 @@ define([
         
         urlRoot: function () {
             return '/users'
+        },
+        
+        parse: function (atts) {
+            atts.updatedAt = atts.updatedAt ? moment(atts.updatedAt).format("MMM Do YY") : '';
+            atts.createdAt = atts.createdAt ? moment(atts.createdAt).format("MMM Do YY") : '';
+
+            return atts;
         }
     });
     

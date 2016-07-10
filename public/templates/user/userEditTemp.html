@@ -1,0 +1,42 @@
+<div class="modal-dialog">
+
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <label for="firstNameInpt" class="col-sm-4 control-label">first name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="firstNameInpt" type="text" placeholder="First name..." value="<%= firstName || ''%>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastNameInpt" class="col-sm-4 control-label">last name</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="lastNameInpt" type="text" placeholder="Last name..." value="<%= lastName || ''%>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="emailInpt" class="col-sm-4 control-label">email</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="emailInpt" type="text" placeholder="Email..." value="<%= email || ''%>">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="roleInpt" class="col-sm-4 control-label">role</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" id="roleInpt" type="text" placeholder="Role..." value="<%= role || ''%>">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id="saveBtnModal" type="button" class="btn btn-default">Save</button>
+        </div>
+    </div>
+
+</div>

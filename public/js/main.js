@@ -3,7 +3,7 @@
 var APP = APP || {};
 
 require.config({
-    paths  : {
+    paths: {
         'jquery'             : './libs/jquery/dist/jquery',
         'backbone'           : './libs/backbone/backbone',
         'underscore'         : './libs/lodash/dist/lodash',
@@ -11,12 +11,13 @@ require.config({
         'backbone.babysitter': './libs/backbone.babysitter/lib/backbone.babysitter',
         'backbone.wreqr'     : './libs/backbone.wreqr/lib/backbone.wreqr',
         'bootstrap'          : './libs/bootstrap/dist/js/bootstrap.min',
+        'moment'             : './libs/moment/moment',
         'text'               : './libs/text/text',
         'templates'          : '../templates',
         'views'              : './views',
         'app'                : './app'
     },
-    shim   : {
+    shim : {
         jquery    : {
             exports: '$'
         },

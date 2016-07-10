@@ -13,7 +13,7 @@ define([
         
         firstRout: function () {
             
-            require(['views/userView', 'collections/userCollection'], function (View, Coll) {
+            require(['views/user/userView', 'collections/userCollection'], function (View, Coll) {
                 var userCollection = new Coll();
                 userCollection.fetch({
                     reset: true,

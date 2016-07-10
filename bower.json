@@ -23,6 +23,7 @@
     "fontawesome": "~4.1.0",
     "bootstrap": "^3.3.6",
     "requirejs": "^2.2.0",
-    "text": "requirejs-text#^2.0.15"
+    "text": "requirejs-text#^2.0.15",
+    "moment": "^2.14.1"
   }
 }
