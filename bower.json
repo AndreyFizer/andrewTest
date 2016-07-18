@@ -2,11 +2,16 @@
   "name"        : "andrewTest",
   "version"     : "0.0.0",
   "homepage"    : "https://github.com/AndreyFizer/andrewTest",
-  "authors"     : ["AndreyFizer <Fizer.AP@outlook.com>"],
+  "authors"     : [
+    "AndreyFizer <Fizer.AP@outlook.com>"
+  ],
   "description" : "testBower",
   "license"     : "MIT",
   "private"     : true,
-
+  "scripts"     : {
+    "postinstall": "bower install",
+    "start"      : "node server.js"
+  },
   "ignore"      : [
     "**/.*",
     "node_modules",
@@ -14,7 +19,6 @@
     "test",
     "tests"
   ],
-
   "dependencies": {
     "jquery"     : "~2.1.0",
     "lodash"     : "~2.4.1",
