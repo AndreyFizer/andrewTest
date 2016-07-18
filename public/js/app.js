@@ -13,7 +13,7 @@ define([
         window.APP = app = new Marionette.Application();
         
         var menuCollection = new MenuColl([
-            {menuName: 'first', menuUrl: '#first', menuActive: true},
+            {menuName: 'Users', menuUrl: '#users', menuActive: true},
             {menuName: 'second', menuUrl: '#second', menuActive: false},
             {menuName: 'third', menuUrl: '#third', menuActive: false}
         ]);
@@ -30,8 +30,8 @@ define([
         app.addInitializer(function () {
             app.topBar.show(topBarView);
             app.footerBar.show(footerView);
-            
-            new Router;
+    
+            new Router();
             Backbone.history.start();
             console.log('App inicialized successfully...');
         });

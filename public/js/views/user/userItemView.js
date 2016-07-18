@@ -8,7 +8,7 @@ define([
     'views/user/userEditView'
 
 ], function (Marionette, _, UserItemTemp, UserModel, EditView) {
-    'use strict';
+    "use strict";
     
     return Marionette.ItemView.extend({
         template : _.template(UserItemTemp),
@@ -34,6 +34,12 @@ define([
         
         onRender: function () {
             console.dir(this.model.toJSON());
+            // todo
+            var a = 6;
+            
+            if (a === 6) {
+                console.log('fff');
+            }
         }
         
     });

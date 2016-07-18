@@ -1,17 +1,15 @@
-/**
- * Created by Andrey on 03.10.2015.
- */
-"use strict";
-
+//Created by Andrey on 03.10.2015.
 
 var crypto = require("crypto");
 var mongoose = require('mongoose');
 
 var UserHandler = function (db) {
-    var ObjectId = mongoose.Schema.Types.ObjectId;
+    "use strict";
+    
     var async = require('async');
     var userSchema = mongoose.Schemas['User'];
     var UserModel = db.model('User', userSchema);
+    var ObjectId = mongoose.Schema.Types.ObjectId;
 
     function createUser(req, res, next) {
 

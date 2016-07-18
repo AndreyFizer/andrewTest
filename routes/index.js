@@ -1,9 +1,9 @@
-'use strict';
-
 var express = require('express');
 var router = express.Router();
 
 module.exports = function (app, db) {
+    "use strict";
+    
     var usersRouter;
 
  /* app.use(function (req, res, next) {

@@ -1,0 +1,7 @@
+{
+  "es5"   : true,
+  "strict": true,
+  "eqeqeq": true,
+  "sub"   : true,
+  "newcap": true
+}

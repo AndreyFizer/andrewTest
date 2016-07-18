@@ -2,6 +2,18 @@ body {
     width: 100%;
     height: 100%;
     display: block;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    background: url("http://5.189.134.154:81/_classpath/smartui/img/default/sweemline-bg.png");
+}
+
+#menuButtons,
+#menuExit {
+    padding-top: 7px;
+}
+
+li {
+    list-style-type: none;
 }
 
 #topBar {
@@ -21,17 +33,19 @@ body {
 }
 
 #wrapperHolder {
-    background: url("https://canjs.com/static/img/bkg-dots.png");
-    height: calc(100% - 100px);
+    /*background: url("http://5.189.134.154:81/_classpath/smartui/img/default/sweemline-bg.png");*/
+    height: auto;
     position: relative;
+    padding: 2% 2% 2% 2%;
 }
 
 #wrapper {
-    margin: 2% 2% 2% 2%;
-    width: 96%;
+    /*margin: 0 2% 2% 2%;*/
+    width: 100%;
     background-color: #ffffff;
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     position: relative;
+    height: 100%;
 }
 
 #footerBar {

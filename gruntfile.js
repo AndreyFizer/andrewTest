@@ -1,8 +1,8 @@
-/**
- * Created by andrey on 19.06.16.
- */
+//reated by andrey on 19.06.16.
 
 module.exports = function (grunt) {
+    "use strict";
+    
     grunt.initConfig({
         notify: {
             test: {

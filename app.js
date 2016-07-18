@@ -1,4 +1,3 @@
-'use strict';
 /*global require, process, __dirname*/
 
 var mongoose = require('mongoose');
@@ -10,14 +9,25 @@ if (!process.env.NODE_ENV) {
 
 require('./config/' + process.env.NODE_ENV);
 
-mongoose.connect(process.env.DB_HOST, process.env.DB_NAME);
+// mongoose.connect(process.env.DB_HOST, process.env.DB_NAME);
+mongoose.connect("mongodb://ds023485.mlab.com:23485/andrewtest", {
+    db     : {native_parser: true},
+    server : {poolSize: 5},
+    replset: {rs_name: 'rs-023485'},
+    user   : 'admin',
+    pass   : '12345'
+});
 db = mongoose.connection;
 
 db.on('error', function (err) {
+    "use strict";
+    
     console.error('>>>>>    Connection Error: ', err);
 });
 
 db.once('open', function () {
+    "use strict";
+    
     console.log('>>>>>    Successfully connection to ' + process.env.DB_HOST + '\\' + process.env.DB_NAME);
     
     require('./models/index');
@@ -43,11 +53,7 @@ db.once('open', function () {
     
     var MemoryStore = require('connect-mongo')(session);
     var sessionConfig = {
-        db               : db.name,
-        host             : db.host,
-        port             : db.port,
-        saveUninitialized: false,
-        resave           : false
+        url              : 'mongodb://admin:12345@ds023485.mlab.com:23485/andrewtest'
     };
     
     app.use(logger('dev'));

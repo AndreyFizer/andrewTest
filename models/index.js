@@ -1,9 +1,7 @@
-/**
- * Created by root on 04.10.15.
- */
-
-'use strict';
+//Created by root on 04.10.15.
 
 module.exports = (function () {
+    "use strict";
+    
     require('./user.js');
 })();

@@ -7,12 +7,13 @@ define([
     'models/menuModel'
 
 ], function (Marionette, _, MenuItemTemp, MenuModel) {
-    'use strict';
+    "use strict";
     
     return Marionette.ItemView.extend({
-        template: _.template(MenuItemTemp),
-        tagName : 'li',
+        tagName  : 'li',
         className: 'col-md-4',
+        
+        template: _.template(MenuItemTemp),
         model   : MenuModel,
         
         ui: {

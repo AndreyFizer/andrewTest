@@ -9,18 +9,18 @@ define([
 ], function ($, _, Backbone, moment) {
     "use strict";
     
-    var Model = Backbone.Model.extend({
+    var UserModel = Backbone.Model.extend({
         idAttribute: '_id',
         
         defaults: {
-            email    : "",
             firstName: "",
             lastName : "",
+            email    : "",
             role     : 1
         },
         
         urlRoot: function () {
-            return '/users'
+            return '/users';
         },
         
         parse: function (atts) {
@@ -31,5 +31,5 @@ define([
         }
     });
     
-    return Model;
+    return UserModel;
 });

@@ -12,9 +12,10 @@ define([
     
     var View;
     View = Marionette.CompositeView.extend({
-        childView : TopBarItemView,
-        childViewContainer : 'ul',
-        template: _.template(TopBarTemp)
+        childView: TopBarItemView,
+        
+        childViewContainer: 'ul',
+        template          : _.template(TopBarTemp)
     });
     
     return View;

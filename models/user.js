@@ -1,9 +1,8 @@
-/**
- * Created by Andrey on 03.10.2015.
- */
-'use strict';
+//Created by Andrey on 03.10.2015.
 
 module.exports = (function () {
+    "use strict";
+    
     var mongoose = require('mongoose');
 
     var userSchema = mongoose.Schema({

@@ -5,26 +5,27 @@ define([
     
     var Router = Marionette.AppRouter.extend({
         routes: {
-            "first"   : "firstRout",
+            "users"   : "usersRout",
             "*actions": "index"
         },
-        index : function () {
+        
+        index: function () {
         },
         
-        firstRout: function () {
+        usersRout: function () {
             
             require(['views/user/userView', 'collections/userCollection'], function (View, Coll) {
                 var userCollection = new Coll();
                 userCollection.fetch({
-                    reset: true,
+                    reset  : true,
                     success: function (collection) {
                         var userView = new View({collection: collection});
-
+                        
                         window.APP.wrapper.show(userView);
                     }
-                })
+                });
                 
-            })
+            });
         }
     });
     
